@@ -1,8 +1,8 @@
 
-### ** Create a new Conda environment with Python 3.11 **
+### Create a new Conda environment with Python 3.11
     $ conda create -p day01 python=3.11
 
-### ** Below is the output that generates from the above command **
+### Below is the output that generates from the above command
 
     conda create -p day01 python=3.11
     Retrieving notices: done
@@ -14,7 +14,7 @@
 
     ## Package Plan ##
 
-    environment location: /Users/anvvsharma/Documents/GitHub/anvvsharma/agenticai/day01
+    environment location: /anvvsharma/agenticai/day01
 
     added / updated specs:
         - python=3.11
@@ -50,7 +50,7 @@
     #
     # To activate this environment, use
     #
-    #     $ conda activate /Users/anvvsharma/Documents/GitHub/anvvsharma/agenticai/day01
+    #     $ conda activate /anvvsharma/agenticai/day01
     #
     # To deactivate an active environment, use
     #
@@ -58,41 +58,41 @@
 
     (base) agenticai % 
 
-### ** conda Command to activatae conda env **
+### conda Command to activatae conda env
     
-    $ conda activate /Users/anvvsharma/Documents/GitHub/anvvsharma/agenticai/day01
+    $ conda activate /anvvsharma/agenticai/day01
 
 
-### ** List conda Command to activatae conda env **
+### List conda Command to activatae conda env
     
     $ conda env list 
 
-# Displays the list of conda environments:
-                    * /Users/anvvsharma/Documents/GitHub/anvvsharma/agenticai/day01
-                    /Users/anvvsharma/anvv/ws/Agentic-AI-2/day3-pydant/venv
+### Displays the list of conda environments:
+                    * /anvvsharma/agenticai/day01
+                    /Agentic-AI-2/day3-pydant/venv
 base                /opt/miniconda3
 agentic_2_base      /opt/miniconda3/envs/agentic_2_base
 
 
-# Verify Python 3.11 env with version command
+### Verify Python 3.11 env with version command
     $ python -V     
     $Python 3.11.11
 
 
-# Verify Python 3.11 env with version command
+### Verify Python 3.11 env with version command
     $ python -V     
     $Python 3.11.11
 
-# Start Python interpreter (REPL) in Termina
+### Start Python interpreter (REPL) in Termina
     python
 
-# Type this in the Python prompt
+### Type this in the Python prompt
     print("Hello, World!")
 
-# Exit the Python interpreter
+### Exit the Python interpreter
     press quit() to exit        
 
-# Instead create a hello.py file and run as bellow
+### Instead create a hello.py file and run as bellow
     python hello.py
 
 
