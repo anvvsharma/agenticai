@@ -1,5 +1,4 @@
 '''
-
 from datetime import datetime, date
 from typing import Optional, List, Dict, Union, Literal, Any
 from enum import Enum
@@ -7,7 +6,7 @@ from pydantic import BaseModel, Field, EmailStr, field_validator, model_validato
 from pydantic import constr, conint, confloat
 from uuid import UUID, uuid4
 ```
-## Core Models
+### Core Models
 
 ### Money Model with Validation ###
 ```
