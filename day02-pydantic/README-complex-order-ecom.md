@@ -6,34 +6,38 @@ from enum import Enum
 from pydantic import BaseModel, Field, EmailStr, field_validator, model_validator, ValidationError
 from pydantic import constr, conint, confloat
 from uuid import UUID, uuid4
-
+```
 ## Core Models
 
 ### Money Model with Validation ###
+```
 class Money(BaseModel):
     amount: confloat(ge=0)
     currency: constr(min_length=3, max_length=3)
 
     def __str__(self):
         return f"{self.amount} {self.currency}"
-
+```
 ### Category Model ###
+```
 class Category(BaseModel):
     id: int
     name: str
     slug: str
     parent_id: Optional[int] = None
-
+```
     
 ### Order Status and Item Models
+```
 class OrderStatus(str, Enum):
     PENDING     = "pending"
     CONFIRMED   ="confirmed"
     SHIPPED     = "shipped"
     DELIVERED   = "delivered"
     CANCELLED   = "cancelled"
-
+```
 ### Order Status and Item Models ###
+```
 class OrderItem(BaseModel):
     # product_id: UUID
     # variant_id: Optional[UUID] = None
@@ -57,8 +61,9 @@ class ShippingAddress(BaseModel):
     postal_code:str
     country: str
     phone: Optional[str] = None
-
+```
 ### Complex Order Model with Financial Validation ###
+```
 class Order(BaseModel):
     id: UUID = Field(default_factory=uuid4)
     order_number: str
@@ -76,16 +81,16 @@ class Order(BaseModel):
     notes: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: Optional[datetime] = None
-'''
+
     @field_validator('order_number')
     @classmethod
     def validate_order_number(cls, v):
         if not v.startswith('ORD-'):
             raise ValueError('Order Number must start with "ORD-"')
         return v
-'''
+```
 ### Usage Example , define data for the Objects
-
+```
 categories = [
     Category(id=1, name="Electronics", slug="electronics"),
     Category(id=2, name="Computers", slug="computers", parent_id=1)
