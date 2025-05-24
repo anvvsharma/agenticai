@@ -125,7 +125,8 @@ order = Order(
 
 print("✓ Complex order created:")
 print(order.model_dump_json(indent=0))
-'''
+
+```
 
 #### This code defines a set of Pydantic models for an e-commerce platform, including:
 
