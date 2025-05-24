@@ -1,76 +1,73 @@
+Pydantic Models for E-commerce Orders
+from datetime import datetime, date
+from typing import Optional, List, Dict, Union, Literal, Any
+from enum import Enum
+from pydantic import BaseModel, Field, EmailStr, field_validator, model_validator, ValidationError
+from pydantic import constr, conint, confloat
+from uuid import UUID, uuid4
 
-    from datetime import datetime, date
-    from typing import Optional, List, Dict, Union, Literal, Any
-    from enum import Enum
-    from pydantic import BaseModel, Field, EmailStr, field_validator, model_validator, ValidationError
-    from pydantic import constr, conint, confloat
-    from uuid import UUID, uuid4
-
-### Core Models
+## Core Models
 
 ### Money Model with Validation ###
-```
+```python
 class Money(BaseModel):
-    amount: confloat(ge=0)
-    currency: constr(min_length=3, max_length=3)
+    """Represents a monetary value with currency."""
+    amount: confloat(ge=0)  # Ensure amount is a positive float
+    currency: constr(min_length=3, max_length=3)  # Currency code (e.g., "USD")
 
     def __str__(self):
         return f"{self.amount} {self.currency}"
-```
-### Category Model ###
-```
+Category Model
 class Category(BaseModel):
+    """Represents a product category."""
     id: int
     name: str
     slug: str
-    parent_id: Optional[int] = None
-```
-    
-### Order Status and Item Models
-```
+    parent_id: Optional[int] = None  # Optional parent category ID
+Order Status and Item Models
 class OrderStatus(str, Enum):
-    PENDING     = "pending"
-    CONFIRMED   ="confirmed"
-    SHIPPED     = "shipped"
-    DELIVERED   = "delivered"
-    CANCELLED   = "cancelled"
-```
-### Order Status and Item Models ###
-```
+    """Order status enumeration."""
+    PENDING = "pending"
+    CONFIRMED = "confirmed"
+    SHIPPED = "shipped"
+    DELIVERED = "delivered"
+    CANCELLED = "cancelled"
+
 class OrderItem(BaseModel):
+    """Represents an order item."""
     # product_id: UUID
     # variant_id: Optional[UUID] = None
-    quantity: conint(gt=0)
+    quantity: conint(gt=0)  # Ensure quantity is a positive integer
     unit_price: Money
 
     @property
     def total_price(self) -> Money:
+        """Calculates the total price for this order item."""
         return Money(
             amount=self.quantity * self.unit_price.amount,
             currency=self.unit_price.currency
         )
-
+Shipping and Billing Address Models
 class ShippingAddress(BaseModel):
+    """Represents a shipping address."""
     recipient_name: str
     company: Optional[str] = None
-    address_line1:str
+    address_line1: str
     address_line2: Optional[str] = None
     city: str
     state: Optional[str] = None
-    postal_code:str
+    postal_code: str
     country: str
     phone: Optional[str] = None
-```
-### Complex Order Model with Financial Validation ###
-```
+Complex Order Model with Financial Validation
 class Order(BaseModel):
-    id: UUID = Field(default_factory=uuid4)
+    """Represents a customer order."""
+    id: UUID = Field(default_factory=uuid4)  # Unique order ID
     order_number: str
     customer_id: UUID
     status: OrderStatus = OrderStatus.PENDING
     items: List[OrderItem]
     shipping_address: ShippingAddress
-    ## billing_address: Optional[ShippingAddress] = None
     billing_address: ShippingAddress
     subtotal: Money
     tax_amount: Money
@@ -81,15 +78,14 @@ class Order(BaseModel):
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: Optional[datetime] = None
 
-    @field_validator('order_number')
-    @classmethod
-    def validate_order_number(cls, v):
-        if not v.startswith('ORD-'):
-            raise ValueError('Order Number must start with "ORD-"')
-        return v
-```
-### Usage Example , define data for the Objects
-```
+    # Example of a field validator (uncomment to use)
+    # @field_validator('order_number')
+    # @classmethod
+    # def validate_order_number(cls, v):
+    #     if not v.startswith('ORD-'):
+    #         raise ValueError('Order Number must start with "ORD-"')
+    #     return v
+Usage Example: Define Data for Objects
 categories = [
     Category(id=1, name="Electronics", slug="electronics"),
     Category(id=2, name="Computers", slug="computers", parent_id=1)
@@ -128,4 +124,12 @@ order = Order(
 
 print("✓ Complex order created:")
 print(order.model_dump_json(indent=0))
+This code defines a set of Pydantic models for an e-commerce platform, including:
 
+Money: Represents a monetary value with currency.
+Category: Represents a product category.
+OrderStatus: Order status enumeration.
+OrderItem: Represents an order item.
+ShippingAddress: Represents a shipping address.
+Order: Represents a customer order.
+The example usage demonstrates how to create instances of these models and print a complex order in JSON format.
