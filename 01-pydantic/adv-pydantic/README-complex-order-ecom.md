@@ -136,4 +136,4 @@ print(order.model_dump_json(indent=0))
 #### OrderItem: Represents an order item. 
 #### ShippingAddress: Represents a shipping address.
 #### Order: Represents a customer order.
-** The example usage demonstrates how to create instances of these models and print a complex order in JSON format. **
+** The example usage demonstrates how to create instances of these models and print a complex order in JSON format.
