@@ -129,7 +129,7 @@ print(order.model_dump_json(indent=0))
 
 ```
 
-#####     This code defines a set of Pydantic models for an e-commerce platform, including:
+##### This code defines a set of Pydantic models for an e-commerce platform, including:
 ##### Money: Represents a monetary value with currency.
 ##### Category: Represents a product category.
 ##### OrderStatus: Order status enumeration. 
