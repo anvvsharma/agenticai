@@ -129,11 +129,11 @@ print(order.model_dump_json(indent=0))
 
 ```
 
-### This code defines a set of Pydantic models for an e-commerce platform, including:### 
-### Money: Represents a monetary value with currency.### 
-### Category: Represents a product category.### 
-### OrderStatus: Order status enumeration.### 
-### OrderItem: Represents an order item.### 
-### ShippingAddress: Represents a shipping address.### 
-### Order: Represents a customer order.### 
-### The example usage demonstrates how to create instances of these models and print a complex order in JSON format.###
+#### This code defines a set of Pydantic models for an e-commerce platform, including:
+#### Money: Represents a monetary value with currency.
+#### Category: Represents a product category.
+#### OrderStatus: Order status enumeration. 
+#### OrderItem: Represents an order item. 
+#### ShippingAddress: Represents a shipping address.
+#### Order: Represents a customer order.
+** The example usage demonstrates how to create instances of these models and print a complex order in JSON format. **
