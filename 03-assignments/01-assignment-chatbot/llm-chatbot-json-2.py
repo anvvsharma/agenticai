@@ -85,13 +85,13 @@ def demonstrate_parsing():
         parser1 = SimpleDynamicJsonParser()
         json_string = str(sample_data)
         parsed1 = parser1.parse(json_string)
-        print("✅ Parsed successfully!")
+        print("Parsed successfully!")
         #print(f"Product Name: {parsed1['Product_Name']}")
         #print(f"Display: {parsed1['Device_Details']['Display']}")
         #print(f"Starting Price: {parsed1['Phone_Price']['Starting_Price']}")
         print(f"Format Instructions: {parser1.get_format_instructions()}")
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"Error: {e}")
     
     print("\n=== Method 2: LangChain JsonOutputParser (Correct Import) ===")
     try:
@@ -103,7 +103,7 @@ def demonstrate_parsing():
         else:
             parsed2 = parser2.parse(json_string)
         
-        print("✅ Parsed successfully!")
+        print("Parsed successfully!")
         print(f"Parser type: {type(parser2)}")
         
         if isinstance(parsed2, dict):
@@ -113,7 +113,7 @@ def demonstrate_parsing():
             print(f"Parsed data: {parsed2}")
             
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f" Error: {e}")
 
 # Utility function for any JSON parsing
 def parse_any_json_format(data: Union[str, dict]) -> Dict[str, Any]:
