@@ -1,0 +1,42 @@
+
+LLM Raw Reply:
+ Actors: EBS Order Management System, Fusion Order Management (FOM) System, Integration API
+
+pre_condition: 
+- EBS Order Management System must be integrated with Fusion Order Management System through API.
+- EBS Order Management System must send order line split events to the Integration API.
+- FOM System must be configured to receive order line split events from EBS.
+
+basic_flow:
+1. EBS Order Management System splits an order line and sends an order line split event to the Integration API.
+2. The Integration API receives the order line split event and triggers a split order lines process in the FOM System.
+3. The FOM System retrieves the order and its associated lines.
+4. The FOM System splits the lines according to the EBS order line split event.
+5. The FOM System updates the order and its lines to reflect the split.
+6. The Integration API syncs the updated order and lines back to EBS Order Management System.
+
+Success Condition:
+- The order is successfully split in FOM System.
+- The updated order and lines are synced back to EBS Order Management System.
+- The order line split event is processed correctly by the Integration API and FOM System.
+
+Failure Condition:
+- The Integration API fails to receive the order line split event from EBS.
+- FOM System fails to split the order lines due to a technical issue.
+- The Integration API fails to sync the updated order and lines back to EBS.
+
+Post Condition:
+- The order is split in FOM System and synced back to EBS.
+- The order line split event is processed and updated in both FOM System and EBS Order Management System.
+- The Integration API continues to process and sync order line split events between FOM System and EBS.
+
+ Parsed Order Info:
+ {
+  "actor": "",
+  "pre_condition": "",
+  "basic_flow": "",
+  "success_condition": "",
+  "failure_condition": "",
+  "post_condition": "",
+  "usecase_name": "Split order lines in Fusion Order Management (FOM) before booking, triggered by EBS order line split events"
+}

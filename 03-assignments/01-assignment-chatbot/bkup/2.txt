@@ -1,0 +1,42 @@
+
+LLM Raw Reply:
+ UseCase Name: Split the Fulfillment Order Line in Fusion Order Management (FOM), Event Triggered by EBS Already in BOOKED Status
+
+Actors: 
+- Order Manager in EBS (Electronic Business Suite)
+- Fulfillment Specialist in Fusion Order Management (FOM)
+
+pre_condition: 
+- The Order in EBS must be in BOOKED status.
+- The Fulfillment Order Line in FOM must be associated with the Order in EBS.
+- The Fulfillment Order Line in FOM must have a valid quantity.
+
+basic_flow: 
+1. Order Manager in EBS initiates the event to split the Fulfillment Order Line in FOM.
+2. The event is received by FOM, which triggers the splitting process.
+3. FOM splits the Fulfillment Order Line into two or more new lines, based on the specified quantity.
+4. The new Fulfillment Order Lines are created in FOM, with the updated quantities.
+5. The new Fulfillment Order Lines are synchronized back to EBS, updating the Order status accordingly.
+
+Success Condition: 
+- The Fulfillment Order Line is successfully split in FOM.
+- The new Fulfillment Order Lines are created and synchronized back to EBS.
+
+Failure Condition: 
+- Insufficient quantity in FOM to split the Fulfillment Order Line.
+- Error in synchronizing the new Fulfillment Order Lines back to EBS.
+
+Post Condition: 
+- The Order in EBS is updated with the new Fulfillment Order Lines.
+- The Fulfillment Order Line in FOM is updated with the split quantity.
+
+ Parsed Order Info:
+ {
+  "actor": "",
+  "pre_condition": "",
+  "basic_flow": "",
+  "success_condition": "",
+  "failure_condition": "",
+  "post_condition": "",
+  "usecase_name": "Split the fulfilment order line in Fusion Order Management (FOM), event triggered by EBS already in BOOKED status"
+}

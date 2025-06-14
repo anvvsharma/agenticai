@@ -1,0 +1,44 @@
+
+LLM Raw Reply:
+ Actors: Order Manager, Order Taker, EBS (Enterprise Business Suite) Integration Team
+
+pre_condition: 
+1. Order is created in EBS and the order status is 'In Progress'.
+2. Order is synced to Fusion Order Management (FOM) and is in 'In Progress' status.
+3. The user has necessary permissions to update the FOM orders.
+
+basic_flow:
+1. Order Manager logs in to FOM and navigates to the order details page.
+2. User selects the order line that needs to be split and clicks on the 'Split Order Line' button.
+3. FOM displays a pop-up window to enter the quantity and new order line details.
+4. User enters the quantity and new order line details and submits the request.
+5. FOM validates the input and splits the order line into two separate lines.
+6. FOM sends the updated order lines to EBS for synchronization.
+7. EBS updates the order status and synchronizes the changes back to FOM.
+8. FOM updates the order status to reflect the changes made.
+
+Success Condition:
+1. The order line is successfully split in FOM.
+2. The updated order lines are successfully synchronized with EBS.
+3. The order status is updated to reflect the changes made.
+
+Failure Condition:
+1. The user does not have necessary permissions to update the FOM orders.
+2. The order status is not 'In Progress' in EBS.
+3. The input quantity or new order line details are invalid.
+
+Post Condition:
+1. The order line is split in FOM and EBS.
+2. The order status is updated to reflect the changes made.
+3. The user is notified of the successful or failed split operation.
+
+ Parsed Order Info:
+ {
+  "actor": "",
+  "pre_condition": "",
+  "basic_flow": "",
+  "success_condition": "",
+  "failure_condition": "",
+  "post_condition": "",
+  "usecase_name": "Split the Order line in Fusion Order Management before Booking the Order"
+}

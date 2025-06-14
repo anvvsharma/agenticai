@@ -1,0 +1,9 @@
+groq
+pydantic
+python-dotenv
+langchain
+langchain-community 
+langchain-core
+langchain-groq
+jsonschema
+langchain_core.output_parsers JsonOutputParser

@@ -1,0 +1,28 @@
+UserStory#1: Customer Allocation - Item Substitution Scenario
+
+FR-001		Does original item have substitutes?	
+FR-001.01		If yes, check sub rank 1 first
+
+FR-002		Check Sub 1 Remaining Allocation	
+FR-002.01		If Allocation IS NULL then check ATR, if ATR >0 and < ordered qty, sub qty = ATR
+FR-002.02		If Allocation IS NULL then check ATR, if ATR >0 and > ordered qty, sub qty = ordered qty
+FR-002.01		If Allocation IS NOT NULL, and ATR>0, and Remaining Allocation > 0 and < ATR, and remaining allocation < ordered qty, sub qty = remaining allocation
+FR-002.01		If Allocation IS NOT NULL, and ATR>0, and Remaining Allocation > 0 and < ATR, and remaining allocation > ordered qty, sub qty = ordered qty
+FR-002.01		If Allocation IS NOT NULL, and ATR>0, and Remaining Allocation <1, then stop, and check sub 2
+FR-002.01		If Allocation IS NOT NULL, and ATR <1, stop and check sub 2
+FR-002.01		If Allocation = 0 then stop and check sub 2
+		
+FR-003		Check Sub 2 Remaining Allocation
+FR-003.01		If Allocation IS NULL then check ATR, if ATR >0 and < ordered qty, sub qty = ATR
+FR-003.02		If Allocation IS NULL then check ATR, if ATR >0 and > ordered qty, sub qty = ordered qty
+FR-003.03		If Allocation IS NOT NULL, and ATR>0, and Remaining Allocation > 0 and < ATR, and remaining allocation < ordered qty, sub qty = remaining allocation
+FR-003.04		If Allocation IS NOT NULL, and ATR>0, and Remaining Allocation > 0 and < ATR, and remaining allocation > ordered qty, sub qty = ordered qty
+FR-003.05		If Allocation IS NOT NULL, and ATR>0, and Remaining Allocation <1, then stop, and check sub 2
+FR-003.06		If Allocation IS NOT NULL, and ATR <1, stop and check original item
+FR-003.07		If Allocation = 0 then stop and check original item
+		
+FR-004		Check original item Remaining Allocation
+FR-004.01		If Allocation IS NULL then do nothing
+FR-004.02		If Allocation IS NOT NULL, then check remaining allocation, if remaining allocation <1, then change order quantity to zero
+FR-004.03		If Allocation IS NOT NULL, then check remaining allocation, if remaining allocation >0 and > ordered qty, then do nothing
+FR-004.04		If Allocation IS NOT NULL, then check remaining allocation, if remaining allocation >0 and < ordered qty, then change ordered quantity to remaining allocation

@@ -1,0 +1,122 @@
+
+LLM Raw Reply:
+ **UseCase Name:** Split the fulfilment order line in Fusion Order Management (FOM), event triggered by EBS already in BOOKED status
+
+**Actors:**
+- Purchasing User (EBS User)
+- Fulfillment Specialist (FOM User)
+- System Administrator (for setup and configuration)
+
+**Pre Condition:**
+- The EBS order is in the BOOKED status.
+- The EBS order has a valid line item that needs to be split.
+- The FOM system is configured to integrate with EBS.
+- The necessary roles and permissions are granted to the users involved.
+
+**Basic Flow:**
+
+1. The Purchasing User in EBS updates the order status to BOOKED.
+2. The EBS system triggers an event to FOM indicating the order is in BOOKED status.
+3. The FOM system checks the order status in EBS and validates the event.
+4. The FOM system retrieves the order details, including the line item to be split.
+5. The FOM system splits the line item as per the business requirement.
+6. The FOM system creates a new fulfillment order line in FOM for the split line item.
+7. The FOM system updates the original fulfillment order line in FOM with the split quantity.
+8. The FOM system syncs the updated fulfillment order back to EBS.
+
+**Success Condition:**
+- The line item is successfully split in FOM.
+- The updated fulfillment order line is successfully synced back to EBS.
+- The FOM system logs the successful event.
+
+**Failure Condition:**
+- The EBS order status is not in BOOKED status.
+- The EBS order line item is not valid for splitting.
+- The FOM system fails to retrieve the order details from EBS.
+- The FOM system fails to split the line item or create a new fulfillment order line.
+- The FOM system fails to sync the updated fulfillment order back to EBS.
+
+**Post Condition:**
+- The FOM system sends a notification to the Fulfillment Specialist about the successful split and sync.
+- The EBS order is updated with the split line item.
+- The FOM system logs the successful event for auditing purposes.
+
+**Technical Documentation:**
+
+### Use Case: Split the Fulfillment Order Line in Fusion Order Management (FOM), Event Triggered by EBS Already in BOOKED Status
+
+#### Overview
+
+This use case describes the integration between EBS and FOM to split a fulfillment order line in FOM when the EBS order is in BOOKED status.
+
+#### Actors
+
+*   **Purchasing User (EBS User):** Responsible for updating the order status in EBS.
+*   **Fulfillment Specialist (FOM User):** Responsible for managing the fulfillment order in FOM.
+*   **System Administrator (for setup and configuration):** Responsible for setting up and configuring the integration between EBS and FOM.
+
+#### Pre-Conditions
+
+*   The EBS order must be in the BOOKED status.
+*   The EBS order must have a valid line item that needs to be split.
+*   The FOM system must be configured to integrate with EBS.
+*   The necessary roles and permissions must be granted to the users involved.
+
+#### Basic Flow
+
+1.  **Trigger Event:** The Purchasing User in EBS updates the order status to BOOKED.
+2.  **Event Notification:** The EBS system triggers an event to FOM indicating the order is in BOOKED status.
+3.  **FOM Validation:** The FOM system checks the order status in EBS and validates the event.
+4.  **Retrieve Order Details:** The FOM system retrieves the order details, including the line item to be split.
+5.  **Split Line Item:** The FOM system splits the line item as per the business requirement.
+6.  **Create New Fulfillment Order Line:** The FOM system creates a new fulfillment order line in FOM for the split line item.
+7.  **Update Original Fulfillment Order Line:** The FOM system updates the original fulfillment order line in FOM with the split quantity.
+8.  **Sync with EBS:** The FOM system syncs the updated fulfillment order back to EBS.
+
+#### Success Condition
+
+*   The line item is successfully split in FOM.
+*   The updated fulfillment order line is successfully synced back to EBS.
+*   The FOM system logs the successful event.
+
+#### Failure Condition
+
+*   The EBS order status is not in BOOKED status.
+*   The EBS order line item is not valid for splitting.
+*   The FOM system fails to retrieve the order details from EBS.
+*   The FOM system fails to split the line item or create a new fulfillment order line.
+*   The FOM system fails to sync the updated fulfillment order back to EBS.
+
+#### Post Condition
+
+*   The FOM system sends a notification to the Fulfillment Specialist about the successful split and sync.
+*   The EBS order is updated with the split line item.
+*   The FOM system logs the successful event for auditing purposes.
+
+#### Technical Requirements
+
+*   The FOM system must be integrated with EBS using APIs or other integration technologies.
+*   The FOM system must have the necessary roles and permissions to perform the split and sync operations.
+*   The EBS system must be configured to trigger events to FOM when the order status is updated to BOOKED.
+
+#### Testing and Quality Assurance
+
+*   The use case must be tested with different scenarios, including successful and failed split and sync operations.
+*   The testing must be performed by the System Administrator to ensure the correct configuration and setup of the integration.
+*   The testing must also be performed by the Fulfillment Specialist to ensure the correct behavior of the FOM system in different scenarios.
+
+#### Conclusion
+
+This use case describes the integration between EBS and FOM to split a fulfillment order line in FOM when the EBS order is in BOOKED status. The technical requirements and testing procedures are also outlined to ensure the correct implementation and behavior of the use case.
+
+ Parsed Order Info:
+ {
+  "actor": "",
+  "pre_condition": "",
+  "basic_flow": "",
+  "success_condition": "",
+  "failure_condition": "",
+  "post_condition": "",
+  "technical_documentation": "",
+  "usecase_name": "Split the fulfilment order line in Fusion Order Management (FOM), event triggered by EBS already in BOOKED status"
+}

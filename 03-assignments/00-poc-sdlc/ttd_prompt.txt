@@ -1,0 +1,142 @@
+{Integration Component Name} - Functional & Technical Design Document
+{TOC of this technical design document}
+
+e.g.,
+1. Document Control
+Name:
+{integration Name} – Functional Requirement Document
+e.g., INT_41_EBSOM_FOM_O2C_SPLIT - Functional Requirement Document
+Version:
+Date	Version	Changes	Made by
+System date	1.0	Initial draft	{developer}
+Approved By:
+Status	Needs internal review, AA review, and design review
+Reviewed By	
+2. Introduction
+2.1. Purpose
+This document details the technical solution design for the {purpose}
+2.2. Scope
+This design document covers:
+	•	{scope}
+It does not cover end-user training, operational monitoring, or detailed network configurations.
+2.3. Audience
+	•	Developers: {audience details}
+	•	Architects: {audience details}
+	•	QA/Testers: {audience details}
+3. Solution Overview
+3.1. Problem Statement
+	{problem statement} based on {query}
+3.2. Goals and Objectives
+	•	Goals and Objectives based on {query} in {target System} and extended {target systems}.
+	•	Goals and Objectives based on {query} in extended {target systems}.
+	•	Goals and Objectives based on {query} in {source System}.
+	•	Implement robust error handling, logging and retry mechanisms.
+	•	Lay out strategies for data validation, idempotency, and performance mechanisms.
+3.3. High-Level Technical Design Flow
+	•	{system diagram} based on {query} 
+	•	{oic component diagram} based on {query}
+	•	{Step by step} based on {query}
+
+4. Functional Design
+4.1. Use Cases
+
+Use Case #1: {SPLIT the ORDER before BOOKING in Fusion Order Management}
+
+Field	Description
+	Use Case Name	{query}
+	Actors	
+	Pre-Conditions	{pre-condition}
+	Basic Flow	{basic flow}
+	Success Condition	{success condition}
+	Failed Conditions	{failure condition}
+	Post-Conditions	{post-condition}
+Use Case #2: SPLIT the order line after BOOKING in Fusion Order Management
+4.2. Process Workflow
+	•	Expand {process workflow diagram} based on {system diagram},{component diagram}
+	•	Error Handling:
+		o	{error handing}
+5. Data Design
+5.1. Source-to-Target Data Mapping
+	•	{oic mapping document in xslt format}
+6. Integration Design
+6.1. System Interaction
+Integration Trigger Conditions
+	•	{how and when the integration is triggered}.
+Acceptance Criteria
+	•	{Acceptance criteria} based on {query}
+Error Handling
+	o	{exception handing} based on {integration component diagram}
+Error and Retry Scenarios
+	o	Detailed and step-by-step {error and retry scenarios} based on {query}.
+Data Validation and Integrity
+	o	{data validation & integration} based on {query}
+Duplicate Processing and Idempotency
+	o	{Duplicate records & Idempotency hierarchy and processing approach}
+REST API Calls (Sales Orders for Order Hub REST Endpoints)
+4. possible {methods} based on usecase {query} in {target system} in below structure
+	e.g., Create New lines in Fusion Order Management
+	•	Purpose:{purpose}
+	•	Method:{method}
+	•	Endpoint: {Example}
+	•	REST API 
+		{resource method} {resource uri}
+	e.g., POST /fscmRestApi/resources/{version}//salesOrdersForOrderHub
+	•	{Sample Payload} based on {target system} 
+	•	Expected Outcome:
+		o	{outcome}
+
+Lookup Details:
+{brief description of what is are lookups from oic in not more than single liner} with below structure in tabular format
+	•	Name:{lookup title}
+	•	Usage:{usage of lookup}
+	•	Column Name: {column name of lookup}
+	•	Integration Name: {integration Name} this tdd doc name
+	•	Use case: {use case name}
+	•	Report Path:{BIP file Name}
+	•	BIP Report Name:{BIP Report Path}
+Connections Needed
+Connection details for 
+	•	Fusion Order Management (via REST Adapter) , Oracle EBS Connection (Via EBS Adapter), Fusion order Management (Via SOAP Adapter), BIP -Fusion order Management (Via SOAP Adapter)
+	•	Connection Name
+	•	URL
+	•	Auth Type
+	•	Security Policy
+	•	UserName
+
+6.2. Event-Driven Architecture
+	•	Triggering Point: {trigger point details}
+	•	Data Flow: {data flow details}
+	•	Trigger: {trigger explanation}
+6.3. Observability
+	o	{oic observability}
+6.4. Sample Payloads
+	{sample payloads}
+7. Non-Functional Requirements
+	•	Performance:
+		o	{expand performance details in two liner} based on {query}
+	•	Scalability:
+		o	{expand scalability details in two liner} based on {query}
+	•	Reliability:
+		o	{expand reliability details in two liner} based on {query}
+	•	Security:
+		o	{expand security details in two liner} based on {query}
+	•	Compliance:
+		o	{expand compliance details in two liner} based on {query}
+8. Deployment Architecture
+	•	{deployment architecture diagram in ASCII format}
+9. Risks, Assumptions and Dependencies
+	•	Risks
+		o	{Risks} based on {query}, {target system}, {extended target system}
+	•	Assumptions
+		o	{Assumptions} based on {query}, {target system}, {extended target system}
+	•	Dependencies
+		o	{Dependencies} based on {query}, {target system}, {extended target system}
+10. Security and Compliance
+	•	{Security and Compliance} based on {query}, {target system}, {extended target system}.
+11. Issues
+	•	{any known issues}
+12. Glossary
+	•	{Glossary} based on this TDD
+13. Appendices
+	•	{Postman Collection}
+	•	{JIRA Tickets}
