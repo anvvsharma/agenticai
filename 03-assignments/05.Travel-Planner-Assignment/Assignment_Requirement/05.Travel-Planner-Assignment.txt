@@ -1,0 +1,135 @@
+## AI Travel Agent & Expense Planner
+
+### System Design
+
+The AI Travel Agent & Expense Planner is designed using object-oriented programming (OOP) principles in Python. The system consists of several classes and modules that work together to provide a comprehensive travel planning experience.
+
+### Classes and Modules
+
+#### 1. `WeatherAPI`
+```python
+import requests
+
+class WeatherAPI:
+    def __init__(self, api_key):
+        self.api_key = api_key
+
+    def get_current_weather(self, city):
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={self.api_key}"
+        response = requests.get(url)
+        return response.json()
+
+    def get_weather_forecast(self, city):
+        url = f"http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={self.api_key}"
+        response = requests.get(url)
+        return response.json()
+```
+#### 2. `AttractionAPI`
+```python
+import requests
+
+class AttractionAPI:
+    def __init__(self, api_key):
+        self.api_key = api_key
+
+    def search_attractions(self, city):
+        url = f"https://api.tripadvisor.com/2.0/location/{city}/attractions?key={self.api_key}"
+        response = requests.get(url)
+        return response.json()
+
+    def search_restaurants(self, city):
+        url = f"https://api.tripadvisor.com/2.0/location/{city}/restaurants?key={self.api_key}"
+        response = requests.get(url)
+        return response.json()
+
+    def search_activities(self, city):
+        url = f"https://api.tripadvisor.com/2.0/location/{city}/activities?key={self.api_key}"
+        response = requests.get(url)
+        return response.json()
+```
+#### 3. `HotelAPI`
+```python
+import requests
+
+class HotelAPI:
+    def __init__(self, api_key):
+        self.api_key = api_key
+
+    def search_hotels(self, city):
+        url = f"https://api.booking.com/hotel/list.json?city={city}&key={self.api_key}"
+        response = requests.get(url)
+        return response.json()
+
+    def estimate_hotel_cost(self, hotel_id, days):
+        url = f"https://api.booking.com/hotel/price.json?hotel_id={hotel_id}&days={days}&key={self.api_key}"
+        response = requests.get(url)
+        return response.json()
+```
+#### 4. `CurrencyConverter`
+```python
+import forex_python.converter as converter
+
+class CurrencyConverter:
+    def __init__(self):
+        self.converter = converter.CurrencyRates()
+
+    def get_exchange_rate(self, from_currency, to_currency):
+        return self.converter.get_rate(from_currency, to_currency)
+
+    def convert_currency(self, amount, from_currency, to_currency):
+        return self.converter.convert(from_currency, to_currency, amount)
+```
+#### 5. `ItineraryGenerator`
+```python
+class ItineraryGenerator:
+    def __init__(self):
+        pass
+
+    def create_itinerary(self, attractions, activities, restaurants, hotel):
+        itinerary = []
+        for day in range(5):  # assuming 5-day trip
+            day_plan = []
+            day_plan.append(attractions[day])
+            day_plan.append(activities[day])
+            day_plan.append(restaurants[day])
+            day_plan.append(hotel)
+            itinerary.append(day_plan)
+        return itinerary
+```
+#### 6. `ExpensePlanner`
+```python
+class ExpensePlanner:
+    def __init__(self):
+        pass
+
+    def calculate_total_cost(self, hotel_cost, attraction_costs, activity_costs, restaurant_costs):
+        total_cost = hotel_cost + sum(attraction_costs) + sum(activity_costs) + sum(restaurant_costs)
+        return total_cost
+
+    def calculate_daily_budget(self, total_cost, days):
+        return total_cost / days
+```
+#### 7. `TravelAgent`
+```python
+class TravelAgent:
+    def __init__(self, weather_api, attraction_api, hotel_api, currency_converter, itinerary_generator, expense_planner):
+        self.weather_api = weather_api
+        self.attraction_api = attraction_api
+        self.hotel_api = hotel_api
+        self.currency_converter = currency_converter
+        self.itinerary_generator = itinerary_generator
+        self.expense_planner = expense_planner
+
+    def plan_trip(self, city, days):
+        # Get current weather and forecast
+        weather = self.weather_api.get_current_weather(city)
+        forecast = self.weather_api.get_weather_forecast(city)
+
+        # Search attractions, activities, and restaurants
+        attractions = self.attraction_api.search_attractions(city)
+        activities = self.attraction_api.search_activities(city)
+        restaurants = self.attraction_api.search_restaurants(city)
+
+        # Search hotels and estimate costs
+        hotels = self.hotel_api.search_hotels(city)
+        hotel_cost
